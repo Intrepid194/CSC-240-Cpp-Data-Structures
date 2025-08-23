@@ -1,0 +1,33 @@
+Numerator: 3 Denominator: 4
+Fraction is not zero 
+Fraction is proper 
+Numerator: 3
+Denominator: 4
+Numerator: 4 Denominator: 3
+Fraction is improper 
+Whole number is 1
+Numerator: 1 Denominator: 3
+Numerator: 0 Denominator: 1
+Fraction is zero 
+Numerator: 2 Denominator: 3
+Fraction is positive 
+Numerator: -2 Denominator: 3
+Fraction is negative 
+Numerator: -2 Denominator: 3
+Fraction is negative 
+Numerator: 2 Denominator: 3
+Fraction is positive 
+Numerator: 5 Denominator: 3
+Whole number is 1
+Numerator: 2 Denominator: 3
+Numerator: -5 Denominator: 3
+Whole number is -1
+Numerator: 2 Denominator: 3
+Numerator: -5 Denominator: 3
+Whole number is -1
+Numerator: 2 Denominator: 3
+Numerator: 5 Denominator: 3
+Whole number is 1
+Numerator: 2 Denominator: 3
+Numerator: 1 Denominator: 0
+Denominator: 0 == 0. Fraction is undefined 
