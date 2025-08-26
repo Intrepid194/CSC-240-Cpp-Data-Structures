@@ -155,7 +155,13 @@ Returns:
     Nothing.
 */
 void FractionType::print() {
-    cout << num << " / " << denom << endl;
+    if (this->IsNotProper() && num % denom == 0) {
+        int newNum;
+        newNum = num / denom;
+        cout << newNum << endl;
+    } else {
+        cout << num << " / " << denom << endl;
+    }
 }
 
 /*
