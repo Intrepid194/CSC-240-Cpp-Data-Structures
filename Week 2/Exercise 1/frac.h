@@ -107,6 +107,20 @@ class FractionType {
             Nothing.
         */
         void print();
+        
+        /*
+        Reduces the fraction numerator and denominator to their respective smallest irreducible values.
+
+        Parameters:
+        -----------
+        None.
+
+        Returns:
+        --------
+        `void`
+            Nothing.
+        */
+        int reduce();
 
         /*
         Addition (`+`) Operator overloader for FractionType class.

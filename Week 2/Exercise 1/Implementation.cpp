@@ -115,6 +115,19 @@ int FractionType::ConvertToProper() {
     return result;
 }
 
+int FractionType::reduce() {
+    int gcf = 1;
+    for (int i=(num>denom) ? num:denom; i>=1; i--) {
+        if (num % i != 0 | denom % i != 0 ) {
+            continue;
+        } else {
+            gcf = i;
+            break;
+        }
+    }
+    return gcf;
+}
+
 FractionType FractionType::operator + (const FractionType& addend) {
     FractionType frac;
     frac.num = num*addend.denom + addend.num*denom;
