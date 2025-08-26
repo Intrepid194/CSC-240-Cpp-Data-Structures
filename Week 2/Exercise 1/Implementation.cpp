@@ -1,9 +1,8 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/23/2025
-// This program helps answer Question 3 for Assignment 1. 
+// Date : 8/26/2025
 // This is the implementation file that defines the 
-// FractionType class methods for Question 3.
+// FractionType class methods for Exercise 1.
 //***************************************************/
 #include "frac.h"   // Include header file
 #include <iostream>
@@ -91,7 +90,9 @@ Returns:
     1 (true) if fraction is not proper (num >= denom), 0 (false) otherwise (num < denom).
 */
 bool FractionType::IsNotProper() {
-    return (num >= denom);
+    // Line below added to get abs. value of "num" and assign to newNum
+    int newNum = (num < 0) ? -1*num : num; 
+    return (newNum >= denom);
 }
 
 /*
@@ -115,19 +116,69 @@ int FractionType::ConvertToProper() {
     return result;
 }
 
-int FractionType::reduce() {
+/*
+Reduces the fraction numerator and denominator to their respective smallest irreducible values.
+
+Parameters:
+-----------
+None.
+
+Returns:
+--------
+`void`
+    Nothing.
+*/
+void FractionType::reduce() {
     int gcf = 1;
     for (int i=(num>denom) ? num:denom; i>=1; i--) {
-        if (num % i != 0 | denom % i != 0 ) {
-            continue;
-        } else {
+        if (num % i == 0 & denom % i == 0 ) {
             gcf = i;
             break;
+        } else {
+            continue;
         }
     }
-    return gcf;
+    num = num / gcf;
+    denom = denom / gcf;
 }
 
+/*
+Prints out the fraction.
+
+Parameters:
+-----------
+None.
+
+Returns:
+--------
+`void`
+    Nothing.
+*/
+void FractionType::print() {
+    if (this->IsNotProper() && num % denom == 0) {
+        int newNum;
+        newNum = num / denom;
+        cout << newNum << endl;
+    } else {
+        cout << num << " / " << denom << endl;
+    }
+}
+
+/*
+Addition (`+`) Operator overloader for FractionType class.
+
+Parameters:
+-----------
+addend : `const FractionType&`
+    Direct reference to the FractionType class instance "addend".
+
+Returns:
+--------
+`FractionType`
+    FractionType class instance with numerator and denominator calculated as follows:
+        frac3.num `=` frac1.num`*`frac2.denom `+` frac2.num`*`frac1.denom
+        frac3.denom `=` frac1.denom  `*` frac2.denom
+*/
 FractionType FractionType::operator + (const FractionType& addend) {
     FractionType frac;
     frac.num = num*addend.denom + addend.num*denom;
@@ -135,6 +186,22 @@ FractionType FractionType::operator + (const FractionType& addend) {
     return frac;
 }
 
+
+/*
+Subtraction (`-`) Operator overloader for FractionType class.
+
+Parameters:
+-----------
+addend : `const FractionType&`
+    Direct reference to the FractionType class instance "addend".
+
+Returns:
+--------
+`FractionType`
+    FractionType class instance with numerator and denominator calculated as follows:
+        frac3.num `=` frac1.num`*`frac2.denom `-` frac2.num`*`frac1.denom
+        frac3.denom `=` frac1.denom  `*` frac2.denom
+*/
 FractionType FractionType::operator - (const FractionType& addend) {
     FractionType frac;
     frac.num = num*addend.denom - addend.num*denom;
@@ -142,6 +209,21 @@ FractionType FractionType::operator - (const FractionType& addend) {
     return frac;
 }
 
+/*
+Subtract (`*`) Operator overloader for FractionType class.
+
+Parameters:
+-----------
+addend : `const FractionType&`
+    Direct reference to the FractionType class instance "addend".
+
+Returns:
+--------
+`FractionType`
+    FractionType class instance with numerator and denominator calculated as follows:
+        frac3.num `=` frac1.num `*` frac2.num
+        frac3.denom `=` frac1.denom `*` frac2.denom
+*/
 FractionType FractionType::operator * (const FractionType& addend) {
     FractionType frac;
     frac.num = num * addend.num;
@@ -149,10 +231,21 @@ FractionType FractionType::operator * (const FractionType& addend) {
     return frac;
 }
 
-void FractionType::print() {
-    cout << "fraction is " << num << " / " << denom << endl;
-}
+/*
+Division (`/`) Operator overloader for FractionType class.
 
+Parameters:
+-----------
+addend : `const FractionType&`
+    Direct reference to the FractionType class instance "addend".
+
+Returns:
+--------
+`FractionType`
+    FractionType class instance with numerator and denominator calculated as follows:
+        frac3.num `=` frac1.num `*` frac2.num
+        frac3.denom `=` frac1.denom `*` frac2.denom
+*/
 FractionType FractionType::operator / (const FractionType& addend) {
     FractionType frac;
     frac.num = num * addend.denom;

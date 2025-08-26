@@ -120,7 +120,7 @@ class FractionType {
         `void`
             Nothing.
         */
-        int reduce();
+        void reduce();
 
         /*
         Addition (`+`) Operator overloader for FractionType class.
