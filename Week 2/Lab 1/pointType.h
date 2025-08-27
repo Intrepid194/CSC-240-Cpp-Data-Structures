@@ -1,3 +1,10 @@
+
+/*****************************************************
+// Author: Spencer Collins
+// Date : 8/26/2025
+// This is the implementation file that defines the 
+// FractionType class methods for Exercise 1.
+//***************************************************/
 //Class pointType
 
 #ifndef H_PointType
