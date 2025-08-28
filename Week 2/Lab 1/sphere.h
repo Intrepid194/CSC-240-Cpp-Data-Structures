@@ -1,8 +1,8 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/26/2025
-// This is the implementation file that defines the 
-// FractionType class methods for Exercise 1.
+// Date : 8/28/2025
+// This is the header file that defines the 
+// Sphere class methods for Lab 1.
 //***************************************************/
 //class Sphere
 
@@ -18,7 +18,7 @@ class Sphere: public circleType {
             double x = 0.0, 
             double y = 0.0, 
             double z = 0.0, 
-            double r= 0.0
+            double r = 0.0
         );
 
     protected:

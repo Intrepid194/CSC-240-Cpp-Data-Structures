@@ -1,8 +1,8 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/26/2025
+// Date : 8/28/2025
 // This is the implementation file that defines the 
-// sphereType class methods for Lab 1.
+// Sphere class methods for Lab 1.
 //***************************************************/
 
 #include "sphere.h"
@@ -46,6 +46,5 @@ Returns:
     Volume of the sphere.
 */
 double Sphere::volume() const {
-    double pi = 3.141592654;
-    return 4 / 3 * pi * radius * radius * radius;
+    return 4.0 / 3.0 * 3.141592654 * this->getRadius() * this->getRadius() * this->getRadius();
 }

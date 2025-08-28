@@ -1,8 +1,7 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/23/2025
-// This program helps answer Question 3 for Assignment 1. 
-// This is the header file that defines the FractionType class for Question 3.
+// Date : 8/28/2025 
+// This is the header file that defines the FractionType class for Exercise 1.
 //***************************************************/
 
 class FractionType {

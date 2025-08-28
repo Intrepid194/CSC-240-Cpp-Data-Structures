@@ -1,9 +1,9 @@
 
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/26/2025
-// This is the implementation file that defines the 
-// FractionType class methods for Exercise 1.
+// Date : 8/28/2025
+// This is the header file that defines the 
+// pointType class methods for Lab 1.
 //***************************************************/
 //Class pointType
 

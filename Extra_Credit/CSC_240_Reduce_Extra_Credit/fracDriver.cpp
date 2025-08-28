@@ -1,8 +1,8 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/26/2025
+// Date : 8/28/2025
 // This is the test driver .cpp file that tests
-// the FractionType class methods for Exercise 1.
+// the FractionType class methods for CSC 240 Reduce Extra Credit.
 //***************************************************/
 #include <iostream>
 #include <fstream>

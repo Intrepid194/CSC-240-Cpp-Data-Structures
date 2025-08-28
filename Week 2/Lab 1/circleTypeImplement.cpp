@@ -1,6 +1,6 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/26/2025
+// Date : 8/28/2025
 // This is the implementation file that defines the 
 // circleType class methods for Lab 1.
 //***************************************************/
@@ -66,7 +66,6 @@ Returns:
 void circleType::setCenter(pointType& point) {
     xCoordinate = point.getX();
     yCoordinate = point.getY();
-
 }
 
 /*
@@ -115,8 +114,7 @@ Returns:
     Circumference of the circle.
 */
 double circleType::getCircumference() const {
-    double pi = 3.141592654;
-    return pi*2*radius;
+    return 3.141592654*2*radius;
 }
 
 /*
@@ -132,8 +130,7 @@ Returns:
     Area of the circle.
 */
 double circleType::getArea() const {
-    double pi = 3.141592654;
-    return pi*radius*radius;
+    return 3.141592654*radius*radius;
 }
 
 

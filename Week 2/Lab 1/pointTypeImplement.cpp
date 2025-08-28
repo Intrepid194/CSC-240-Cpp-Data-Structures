@@ -1,6 +1,6 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 8/26/2025
+// Date : 8/28/2025
 // This is the implementation file that defines the 
 // pointType class methods for Lab 1.
 //***************************************************/
@@ -63,7 +63,7 @@ Returns:
     Nothing.
 */
 void pointType::print() const {
-
+    cout << "(" << this->getX() << ", " << this->getY() << ")" << endl;
 }
 
 /*
