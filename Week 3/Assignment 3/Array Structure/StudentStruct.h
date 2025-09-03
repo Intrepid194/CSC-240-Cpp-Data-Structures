@@ -1,0 +1,22 @@
+/*****************************************************
+// Author: Spencer Collins
+// Date : 9/2/2025 
+// This is the header file that defines the Student struct for Assignment 3.
+//***************************************************/
+
+#ifndef STUD_H
+#define STUD_H
+
+#include <string>
+
+using namespace std;
+
+struct Student {
+    string firstName;
+    string lastName;
+    char districtCode;
+    float currentCredits;
+    float tuitionOwed;
+};
+
+#endif
