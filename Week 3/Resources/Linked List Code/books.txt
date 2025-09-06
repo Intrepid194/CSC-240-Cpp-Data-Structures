@@ -1,0 +1,10 @@
+Effective C++,Scott Meyers,320,45.00
+Clean Code,Robert C. Martin,464,49.99
+The Pragmatic Programmer,Andrew Hunt,352,42.50
+Introduction to Algorithms,Cormen Leiserson,1312,89.95
+Python Crash Course,Eric Matthes,544,39.95
+Head First Design Patterns,Eric Freeman,694,54.99
+Data Structures in C++,John R. Hubbard,400,34.95
+Code Complete,Steve McConnell,960,58.99
+Algorithms Unlocked,Thomas H. Cormen,240,29.99
+My Code,Frank Alvino,550,25.99

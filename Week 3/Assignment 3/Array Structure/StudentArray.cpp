@@ -8,7 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <typeinfo>
+
 #include "StudentStruct.h"
 
 void displayStudents(const Student[], const int);
