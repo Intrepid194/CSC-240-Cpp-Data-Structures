@@ -13,13 +13,14 @@
 using namespace std;
 
 class Student {
-    public:
+    private:
         string firstName;
         string lastName;
         char districtCode;
         float currentCredits;
         float tuitionOwed;
-
+    public:
+    //default constructor for Student class
     Student () : 
         firstName(""), 
         lastName(""),
@@ -27,9 +28,8 @@ class Student {
         currentCredits(0.0),
         tuitionOwed(0.0)
     {}
-
     //Getter Methods
-    string getFirstName() {
+    string getFirstName() const {
         return firstName;
     }
 
@@ -54,7 +54,7 @@ class Student {
     }
 
     //Setter Methods
-    void setFirstName(const string &fN) {
+    void setFirstName(const string &fN) { //strings passed by reference are more efficent since they are not copied
         firstName = fN;
     }
 

@@ -12,11 +12,15 @@
 
 using namespace std;
 
-struct Node {
-    Student student;
-    Node* next;
+// Node contains data as defined by the object and a pointer
+// This approach makes the code more re-usable as you can change the data object
+// and the base operations of adding, deleting, etc will remain the same code. 
 
-    Node(const Student& s) : student(s), next(nullptr) {}
+struct Node {
+    Student data; //this the data based on the Student class
+    Node* next; // pointer to next object or nullptr
+
+    Node(const Student& s) : data(s), next(nullptr) {}
 };
 
 

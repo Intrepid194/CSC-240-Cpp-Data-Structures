@@ -1,7 +1,7 @@
 /*****************************************************
 // Author: Spencer Collins
 // Date : 9/5/2025 
-// This is the implementation file that defines the array of Student structs for Assignment 3.
+// This is the implementation file that defines the Linked List for the Student class for Assignment 3.
 //***************************************************/
 
 #include <iostream>
@@ -11,6 +11,7 @@
 #include "Node.h"
 #include "StudentObj.h"
 
+//function prototype for displaying Students
 void displayStudents(Node* head);
 
 int main() {
@@ -24,6 +25,9 @@ int main() {
 
     string line;
 
+    // here we are maintaining pointer to head (front of the list)
+    // and a pointer to the back (last node of the list). 
+    // the list starts out empty meaning head and tail are both NULL
     Node* head = nullptr;
     Node* tail = nullptr;
 
@@ -43,16 +47,19 @@ int main() {
 
         float currentCredits = stof(currentCreditsStr);
 
+        //create new Student class to add the data to
         Student student;
         student.setFirstName(firstName);
         student.setLastName(lastName);
         student.setDistrictCode(districtCode[0]);
         student.setCurrentCredits(currentCredits);
 
-        // cout << student.getFirstName() << endl;
-        Node* newNode = new Node(student);
+        // allocated a new node and check for an empty list
+        // consider empty lists as a special case
+        Node* newNode = new Node(student); //newNode is the newly created node to add to the list
         if (!head) {
-            head = newNode = tail;
+            head = newNode; // empty list the first add has head 
+            tail = newNode; //and tail pointing to the same node
         } else {
             tail->next = newNode;
             tail = newNode;
@@ -64,6 +71,8 @@ int main() {
     readFile.close();
     displayStudents(head);
 
+    // free up memory before ending
+    // c++ implementation will not automatically free memory when the program ends
     Node* current = head;
     while(current) {
         Node* temp = current;
@@ -74,16 +83,20 @@ int main() {
 }
 
 void displayStudents(Node* head) {
+     cout << "\nStudents List - Linked List Version" << endl << endl;
 
     Node* current = head;
 
-    while(current) {
-        cout << "First Name: " << current->student.getFirstName() << endl;
-        // cout << "Last Name: " << current->student.getFirstName() << endl;
-        // cout << "District Code: " << current->student.getDistrictCode() << endl;
-        // cout << "Current Credits: " << current->student.getCurrentCredits() << endl;
-        // cout << "Tuition Owed: " << current->student.getTutitionOwed() << endl;
+    // while (current not equal to nullptr) or not at end of the list
+    // current pointer will "visit" each node    
+    while (current) {
+        cout << "First Name: " << current->data.getFirstName() << endl;
+        cout << "Last Name: " << current->data.getLastName() << endl;
+        cout << "District Code: " << current->data.getDistrictCode() << endl;
+        cout << "Current Credits: " << current->data.getCurrentCredits() << endl;
+        cout << "Tuition Owed: " << current->data.getTutitionOwed() << endl;
         cout << endl;
+        current = current->next; //advnace the current pointer to the next pointer
     }
-    current = current->next;
+    
 }
