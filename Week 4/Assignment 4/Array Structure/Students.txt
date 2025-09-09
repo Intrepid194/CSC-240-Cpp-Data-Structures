@@ -1,0 +1,10 @@
+Everett Ramos,I,25.0
+Jordan Ross,I,15.0
+Adam Bennett,O,45.0
+Adrian Scott,O,12.0
+Henry Flores,I,4.0
+Alexander Walker,O,57.0
+Sebastian Anderson,O,31.0
+Noah King,I,14.0
+Ezekiel Bennett,O,68.0
+Miles Reed,I,75.0
