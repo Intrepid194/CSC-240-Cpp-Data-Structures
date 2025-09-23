@@ -1,8 +1,0 @@
-First Name: Sue
-Last Name: Davis
-Department: Sales
-Salary: 125000
-First Name: John
-Last Name: Jones
-Department: IT
-Salary: 100000
