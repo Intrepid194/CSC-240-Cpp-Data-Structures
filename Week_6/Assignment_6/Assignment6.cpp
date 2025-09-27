@@ -21,9 +21,23 @@ class StringWrapper {
             s = str;
         }
 
+        /*
+        Removes the leading and trailign whitespaces from a string
+
+        Parameters:
+        -----------
+        `None`
+
+        Returns:
+        --------
+        `None`
+
+        */
         void removeWhiteSpace() {
             int start = 0;
             int end = s.length() - 1;
+
+            //iterates through the string and gets the location of leading and trailing whitespaces, when both locations != " ", get the substring.
             for (int i = 0; i<s.length(); i++) {
                 if (s[i] == ' ') {
                     start++;
@@ -37,6 +51,7 @@ class StringWrapper {
         }
 };
 
+//Struct for storing employee record
 struct Employee {
     string firstName;
     string lastName;
@@ -44,6 +59,7 @@ struct Employee {
     float salary;
 };
 
+//Class for creating and maintaining the stack of Employees
 class EmployeeStack {
     private:
         Employee employeeStack[25];
@@ -55,6 +71,18 @@ class EmployeeStack {
             length = 0;
         }
 
+        /*
+        Removes the leading and trailign whitespaces from a string
+
+        Parameters:
+        -----------
+        newEmployee : `Employee&`
+
+        Returns:
+        --------
+        `bool`
+
+        */
         bool push(Employee& newEmployee) {
             employeeStack[length] = newEmployee;
             length++;
@@ -166,13 +194,6 @@ class EmployeeStack {
             //check if stack is full
             int full = this->isFull();
             (full == 0) ? cout << "Stack is not full" << endl : cout << "Stack is full" << endl;
-
-            
-
-            
-
-
-
         }
 
         void readFromFile(const string& fileName) {
@@ -216,45 +237,7 @@ class EmployeeStack {
 
 int main() {
     EmployeeStack employeeStack;
-    // ifstream inputFile("Empldat.txt");
-    // if (!inputFile) {
-    //     cerr << "Error opening or reading file." << endl;
-    //     return 1;
-    // }
-
-    // string line;
-    // EmployeeStack employeeStack;
-
-    // while(getline(inputFile, line)) {
-    //     StringWrapper firstName, lastName, department, salaryStr;
-    //     stringstream ss(line);
-        
-    //     Employee newEmployee;
-
-    //     getline(ss, firstName.s, ',');
-    //     getline(ss, lastName.s, ',');
-    //     getline(ss, department.s, ',');
-    //     getline(ss, salaryStr.s, ',');
-
-    //     firstName.removeWhiteSpace();
-    //     lastName.removeWhiteSpace();
-    //     department.removeWhiteSpace();
-
-    //     float salary = stof(salaryStr.s);    
-
-    //     newEmployee.firstName = firstName.s;
-    //     newEmployee.lastName = lastName.s;
-    //     newEmployee.department = department.s;
-    //     newEmployee.salary = salary;
-
-    //     employeeStack.push(newEmployee);
-    // }
-    // employeeStack.isFull();
-    // employeeStack.pop();
-    // employeeStack.modifyEmployee(" Taylor", "IT", "86000.00");
-    // employeeStack.searchByLastName(" Taylor");
-    // employeeStack.display();
-
+    
     //this is the interactive part of the programs
     while (true) {
 
