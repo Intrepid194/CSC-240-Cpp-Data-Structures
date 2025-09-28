@@ -22,7 +22,7 @@ class StringWrapper {
         }
 
         /*
-        Removes the leading and trailign whitespaces from a string
+        Removes the leading and trailign whitespaces from a string.
 
         Parameters:
         -----------
@@ -72,16 +72,17 @@ class EmployeeStack {
         }
 
         /*
-        Removes the leading and trailign whitespaces from a string
+        Adds the new employee to the top of the stack.
 
         Parameters:
         -----------
         newEmployee : `Employee&`
+            Employee object to be added to the stack.
 
         Returns:
         --------
         `bool`
-
+            Numerical value of 1.
         */
         bool push(Employee& newEmployee) {
             employeeStack[length] = newEmployee;
@@ -89,6 +90,18 @@ class EmployeeStack {
             return 1;
         }
 
+        /*
+        Removes the most recent employee from the top of the stack.
+
+        Parameters:
+        -----------
+        `None`
+
+        Returns:
+        --------
+        `bool`
+            1 for success, 0 for failure.
+        */
         bool pop() {
             if (length > 0) {
                 length--;
@@ -97,6 +110,18 @@ class EmployeeStack {
             return 0;
         }
 
+        /*
+        Displays all employees in the stack.
+
+        Parameters:
+        -----------
+        `None`
+
+        Returns:
+        --------
+        `void`
+
+        */
         void display() {
             if (length > 0) {
                 for (int i = 0; i <length; i++) {
@@ -111,14 +136,57 @@ class EmployeeStack {
             }
         }
 
+        /*
+        Checks if the stack is full or not.
+
+        Parameters:
+        -----------
+        `None`
+
+        Returns:
+        --------
+        `bool`
+            1 if full, 0 if not full.
+        */
         bool isFull() {
             return (length == 25) ? 1 : 0;
         }
 
+        /*
+        Checks if the stack is empty or not.
+
+        Parameters:
+        -----------
+        `None`
+
+        Returns:
+        --------
+        `bool`
+            1 if empty, 0 if not empty.
+        */
         bool isEmpty() {
             return (length > 0) ? 0 : 1;
         }
 
+        /*
+        Modifies an existing employee in the stack by last name.
+
+        Parameters:
+        -----------
+        lastName : `const string&`
+            Employee's last name.
+        firstName : `const string&`
+            Employee's first name.
+        newDept : `const string&`
+            Employee's new department.
+        newSalary : `float`
+            Employee's new salary.                
+
+        Returns:
+        --------
+        `bool`
+            1 if modified, 0 if not modified.
+        */
         bool modifyEmployee(const string& lastName, const string& newDept, float newSalary) {
             for (int i = length - 1; i >= 0; i--) {
                 if (employeeStack[i].lastName == lastName) {
@@ -131,6 +199,19 @@ class EmployeeStack {
             return 0;
         }
 
+        /*
+        Searches for an employee by last name in the stack.
+
+        Parameters:
+        -----------
+        lastName : `const string&`
+            Employee's last name.
+
+        Returns:
+        --------
+        `bool`
+            1 if found, 0 if not found.
+        */
         bool searchByLastName(const string& lastName) {
             for (int i = 0; i < length; i++) {
                 if (employeeStack[i].lastName == lastName) {
@@ -147,11 +228,35 @@ class EmployeeStack {
         }
 
         //Added methods for the interactive portion of the assignment
+        /*
+        Empties the stack.
+
+        Parameters:
+        -----------
+        `None`
+
+        Returns:
+        --------
+        `bool`
+            Numerical value of 1.
+        */
         bool restoreStack() {
             length = 0;
             return 1;
         }
 
+        /*
+        Runs unit tests on the class methods.
+
+        Parameters:
+        -----------
+        `None`
+
+        Returns:
+        --------
+        `void`
+
+        */
         void runUnitTests() {
             //reset the stack to 0
             this->restoreStack();
@@ -196,6 +301,19 @@ class EmployeeStack {
             (full == 0) ? cout << "Stack is not full" << endl : cout << "Stack is full" << endl;
         }
 
+        /*
+        Reads employee data from a file and adds it to the stack.
+
+        Parameters:
+        -----------
+        fileName : `const string&`
+            Name of the file.
+
+        Returns:
+        --------
+        `void`
+
+        */
         void readFromFile(const string& fileName) {
             ifstream inputFile(fileName);
             if (!inputFile) {
@@ -238,7 +356,7 @@ class EmployeeStack {
 int main() {
     EmployeeStack employeeStack;
     
-    //this is the interactive part of the programs
+    //this is the interactive part of the program
     while (true) {
 
         string choice; 
