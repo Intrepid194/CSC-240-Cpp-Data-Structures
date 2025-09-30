@@ -1,0 +1,10 @@
+Chicago,2700000
+Springfield,115000
+Naperville,149000
+Peoria,113000
+St. Louis,4000000
+Detriot,3500000
+Milwaukee,2900000
+New York,7000000
+Dallas,4000000
+Los Angeles,5500000
