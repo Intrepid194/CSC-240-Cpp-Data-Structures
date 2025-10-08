@@ -340,7 +340,20 @@ class EmployeeStack {
             //reset the stack to 0
             this->restoreStack();
         }
+        
+        /*
+        Reads employee data from a file and adds it to the stack.
 
+        Parameters:
+        -----------
+        fileName : `const string&`
+            Name of the file.
+
+        Returns:
+        --------
+        `void`
+
+        */
         void readFile(const string& fileName) {
 
             ifstream inputFile(fileName);
