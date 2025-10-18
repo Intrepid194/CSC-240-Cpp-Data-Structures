@@ -46,12 +46,13 @@ public:
             current = newSong;
         }
         else {
+
+            Song* last = current->prev;
             // add code to add node to the end of the list
-           newSong->prev = current;
-           current->next = newSong;
-           current->prev = newSong;
-           newSong->next = current;
-           current = newSong;
+            newSong->next = current;
+            newSong->prev = last;
+            last->next = newSong;
+            current->prev = newSong;
         }
     }
 
