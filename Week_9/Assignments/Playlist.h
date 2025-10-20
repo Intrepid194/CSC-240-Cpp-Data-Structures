@@ -1,6 +1,6 @@
 /*****************************************************
 // Author: Spencer Collins
-// Date : 10/16/2025 
+// Date : 10/19/2025 
 // This is the header file for Problem 1 Assignment 9.
 //***************************************************/
 
@@ -68,11 +68,12 @@ public:
         do {
             // add code to find a node by title. last node points to the first node
             
-            temp = current->next;
+            
             if(temp->title == title) {
                 found = true;
                 break;
             }
+            temp = current->next;
         } while (temp != current);
 
         if (!found) {
@@ -87,7 +88,8 @@ public:
         }
         else {
             // add code to delete the found node
-            
+            temp->next->prev = temp->prev;
+            temp->prev->next = temp->next;
 
             if (temp == current) current = temp->next;
             delete temp;
