@@ -17,7 +17,36 @@ struct Game {
 // Quick Sort by score (descending)
 int partitionByScore(Game arr[], int low, int high) {
     // add code here
-    return 0;
+    //assign pivot value as the last element in the array
+    
+    Game pivot = arr[high];
+
+
+    //assign swap index as -1, since it is < the counter i
+    int swap = -1;
+
+    // iterate through the array
+    // for each array element name that is greater than the pivot name swap positions in the array with the swap positions
+    // done in place
+    for (int i=0; i<high; i++) {
+        if (arr[i].score > pivot.score) {
+            swap++;
+            Game swappedScore = arr[swap];
+            Game orgScore = arr[i];
+            arr[i] = swappedScore;
+            arr[swap] = orgScore;
+        }
+    };
+
+    //shift all array elements greater than pivot 1 index position to the right
+    for (int i = high; i > swap; i--) {
+        arr[i] = arr[i-1];
+    }
+    //assign the pivot element to swap + 1 index so it is in between the two partitioned portions of the array
+    arr[swap+1] = pivot;
+
+    return swap + 1;
+
 }
 
 void quickSortByScore(Game arr[], int low, int high) {
@@ -31,35 +60,35 @@ void quickSortByScore(Game arr[], int low, int high) {
 // Quick Sort by name (ascending)
 int partitionByName(Game arr[], int low, int high) {
    // Add code here
-        //assign pivot value as the last element in the array
-        
-        Game pivot = arr[high];
+    //assign pivot value as the last element in the array
+    
+    Game pivot = arr[high];
 
 
-        //assign swap index as -1, since it is < the counter i
-        int swap = -1;
+    //assign swap index as -1, since it is < the counter i
+    int swap = -1;
 
-        // iterate through the array
-        // for each array element name that is greater than the pivot name swap positions in the array with the swap positions
-        // done in place
-        for (int i=0; i<high; i++) {
-            if (arr[i].name < pivot.name) {
-                swap++;
-                Game swappedGame = arr[swap];
-                Game orgGame = arr[i];
-                arr[i] = swappedGame;
-                arr[swap] = orgGame;
-            }
-        };
-
-        //shift all array elements greater than pivot 1 index position to the right
-        for (int i = high; i > swap; i--) {
-            arr[i] = arr[i-1];
+    // iterate through the array
+    // for each array element name that is greater than the pivot name swap positions in the array with the swap positions
+    // done in place
+    for (int i=0; i<high; i++) {
+        if (arr[i].name < pivot.name) {
+            swap++;
+            Game swappedGame = arr[swap];
+            Game orgGame = arr[i];
+            arr[i] = swappedGame;
+            arr[swap] = orgGame;
         }
-        //assign the pivot element to swap + 1 index so it is in between the two partitioned portions of the array
-        arr[swap+1] = pivot;
+    };
 
-        return swap + 1;
+    //shift all array elements greater than pivot 1 index position to the right
+    for (int i = high; i > swap; i--) {
+        arr[i] = arr[i-1];
+    }
+    //assign the pivot element to swap + 1 index so it is in between the two partitioned portions of the array
+    arr[swap+1] = pivot;
+
+    return swap + 1;
 
 }
 
