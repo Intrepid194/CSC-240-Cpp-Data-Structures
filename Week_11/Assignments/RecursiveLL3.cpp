@@ -1,3 +1,10 @@
+/*****************************************************
+// Author: Spencer Collins
+// Date : 10/31/2025 
+// This is the implementation file for Problem 1 Assignment 10.
+//***************************************************/
+
+
 #include <iostream>
 using namespace std;
 
@@ -10,27 +17,69 @@ struct Node {
 
 // Recursive function to remove all occurrences of target
 Node* removeAll(Node* head, int target) {
-    // add code here
+    if (head == nullptr) {
+        return nullptr;
+    }
+
+    head->next = removeAll(head->next, target);
+    cout << "head: " << head->data << endl;
+    if (head->data == target) {
+        Node* temp = head->next;
+
+        delete head;
+        return temp;
+        
+    } else {
+        return head;
+    }
 }
 
 // Recursive function to display list in reverse
 void printReverse(Node* head) {
     // add code here
+    Node* current = head;
+    if (current != nullptr) {
+        printReverse(current->next);
+        cout << current->data << " ";
+    }
 }
 
 // Insert at end (iterative)
 void insertEnd(Node*& head, int val) {
     // add code here
+    Node* newNode = new Node(val);
+    if (head == nullptr) {
+        head = newNode;
+    } else {
+        Node* current = head;
+        while (current) {
+            if (current->next == nullptr) {
+                current->next = newNode;
+                break;
+            }
+            current = current->next;
+        }
+    }
 }
 
 // Display list (forward)
 void printList(Node* head) {
     // add code here
+    Node* current = head;
+    while (current) {
+        cout << current->data << " ";
+        current = current->next;
+    }
 }
 
 // Free memory
 void deleteList(Node*& head) {
    // add code here
+    while (head) {
+        Node* current = head;
+        head = head->next;
+        delete current;
+    }
 }
 
 // Menu
@@ -66,6 +115,7 @@ int main() {
             cout << "Enter value to remove: ";
             cin >> val;
             head = removeAll(head, val);
+            cout << "head: " << head->data << endl;
             cout << "Updated list: ";
             printList(head);
         }
