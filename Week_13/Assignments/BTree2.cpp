@@ -1,5 +1,6 @@
 #include<iostream>
 #include<fstream>
+#include <queue>
 #include "Header.h"
 using namespace std;
 
@@ -12,6 +13,11 @@ void Insert_BTree(TreeNode*& tree, string lname)  // Note: passing Root by refer
 	if (tree == NULL)
 	{
 		// add code to insert a new node
+		tree = new TreeNode;
+		tree->GetLastName(lname);
+		tree->Left = nullptr;
+		tree->Right = nullptr;
+		return;
 	}
 	// Check if name is already in the tree, if so simply return
 	// assumes no duplicate values
@@ -26,10 +32,55 @@ void Insert_BTree(TreeNode*& tree, string lname)  // Note: passing Root by refer
 void DisplayTree(TreeNode* tree)
 {
 	// add code for in-order traversal and display of the tree
+	// if (tree->Left != nullptr) {
+	// 	DisplayTree(tree->Left);
+	// }
+	// cout << tree->GetLastName() << " ";
+	// if(tree->Right != nullptr) {
+	// 	DisplayTree(tree->Right);
+	// }
+	if (!tree) return;
+
+    queue<TreeNode*> q;
+    q.push(tree);
+
+    while (!q.empty()) {
+        int levelSize = q.size();  // number of nodes in current row
+
+        for (int i = 0; i < levelSize; ++i) {
+            TreeNode* node = q.front();
+            q.pop();
+
+            cout << node->GetLastName() << " ";
+
+            if (node->Left) q.push(node->Left);
+            if (node->Right) q.push(node->Right);
+        }
+        cout << endl;  // end of row
+    }
 }
 void Search_Tree(TreeNode* tree, string slname, bool& found_flag)
 {
 	// add code to search the tree for  specific node and indicate if not found
+	if (tree == nullptr) {
+		return;
+	}
+	if (slname == tree->GetLastName()) {
+		found_flag = true;
+		if (tree->Left != nullptr) {
+		cout << "Left Child: " << tree->Left->GetLastName() << endl;
+		}
+		if (tree->Right != nullptr) {
+			cout << "Right Child: " << tree->Right->GetLastName() << endl;
+		}
+		
+		return;
+	} else if (slname < tree->GetLastName()) {
+		Search_Tree(tree->Left, slname, found_flag);
+	}
+	else if (slname > tree->GetLastName()) {
+		Search_Tree(tree->Right, slname, found_flag);
+	}
 
 }
 int Display_Menu()
@@ -92,16 +143,32 @@ void Delete_Tree(TreeNode*& tree)
 		//by moving as far left as possible
 
 		// add code here
-
-		
+		// TreeNode* AttachPointParent = tree;
+		while(AttachPoint->Left != nullptr) {
+			// AttachPointParent = AttachPoint;
+			AttachPoint = AttachPoint->Left;
+		}
+		cout << AttachPoint->GetLastName() << endl;
+		return;
 		// end of add code
 		
-		// attach the left subrtree of the original tree
+		// attach the left subtree of the original tree
 		// as the left subtree of the smallest node
 		// in the right subtree
 
 		// add code here
-
+		// cout << AttachPoint->GetLastName() << endl;
+		// AttachPoint->Left = tree->Left;
+		// if (AttachPointParent == tree) {
+		// 	tree = AttachPoint;
+		// } else {
+		// 	if (AttachPoint->Right != nullptr) {
+		// 		AttachPointParent->Left = AttachPoint->Right;
+		// 		AttachPoint->Right = tree->Right;
+		// 	} else {
+		// 		AttachPointParent->Left = nullptr;
+		// 	}
+		// }
 		
 		// end of add code
 
@@ -112,10 +179,8 @@ void Delete_Tree(TreeNode*& tree)
 		// end of add code
 
 		//delete original node
-		delete NodeToDelete;
+		//delete NodeToDelete;
 	}
-
-
 }
 void Remove_Tree(TreeNode*& tree, string lname)
 {
