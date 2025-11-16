@@ -1,6 +1,5 @@
 #include<iostream>
 #include<fstream>
-#include <queue>
 #include "Header.h"
 using namespace std;
 
@@ -32,32 +31,13 @@ void Insert_BTree(TreeNode*& tree, string lname)  // Note: passing Root by refer
 void DisplayTree(TreeNode* tree)
 {
 	// add code for in-order traversal and display of the tree
-	// if (tree->Left != nullptr) {
-	// 	DisplayTree(tree->Left);
-	// }
-	// cout << tree->GetLastName() << " ";
-	// if(tree->Right != nullptr) {
-	// 	DisplayTree(tree->Right);
-	// }
-	if (!tree) return;
-
-    queue<TreeNode*> q;
-    q.push(tree);
-
-    while (!q.empty()) {
-        int levelSize = q.size();  // number of nodes in current row
-
-        for (int i = 0; i < levelSize; ++i) {
-            TreeNode* node = q.front();
-            q.pop();
-
-            cout << node->GetLastName() << " ";
-
-            if (node->Left) q.push(node->Left);
-            if (node->Right) q.push(node->Right);
-        }
-        cout << endl;  // end of row
-    }
+	if (tree->Left != nullptr) {
+		DisplayTree(tree->Left);
+	}
+	cout << tree->GetLastName() << " ";
+	if(tree->Right != nullptr) {
+		DisplayTree(tree->Right);
+	}
 }
 void Search_Tree(TreeNode* tree, string slname, bool& found_flag)
 {
@@ -143,13 +123,13 @@ void Delete_Tree(TreeNode*& tree)
 		//by moving as far left as possible
 
 		// add code here
-		// TreeNode* AttachPointParent = tree;
+		TreeNode* AttachPointParent = tree;
 		while(AttachPoint->Left != nullptr) {
-			// AttachPointParent = AttachPoint;
+			AttachPointParent = AttachPoint;
 			AttachPoint = AttachPoint->Left;
 		}
-		cout << AttachPoint->GetLastName() << endl;
-		return;
+		// cout << AttachPoint->GetLastName() << endl;
+		// return;
 		// end of add code
 		
 		// attach the left subtree of the original tree
@@ -157,29 +137,29 @@ void Delete_Tree(TreeNode*& tree)
 		// in the right subtree
 
 		// add code here
-		// cout << AttachPoint->GetLastName() << endl;
-		// AttachPoint->Left = tree->Left;
-		// if (AttachPointParent == tree) {
-		// 	tree = AttachPoint;
-		// } else {
-		// 	if (AttachPoint->Right != nullptr) {
-		// 		AttachPointParent->Left = AttachPoint->Right;
-		// 		AttachPoint->Right = tree->Right;
-		// 	} else {
-		// 		AttachPointParent->Left = nullptr;
-		// 	}
-		// }
-		
+
+		AttachPoint->Left = tree->Left;
+
 		// end of add code
 
 		//replace original tree with its right subtree
 		// add code here
-
+		if (AttachPointParent == tree) {
+			tree = AttachPoint;
+		} else {
+			if(AttachPoint->Right != nullptr) {
+				AttachPointParent->Left = AttachPoint->Right;
+			} else {
+				AttachPoint->Right = tree->Right;
+				AttachPointParent->Left = nullptr;
+			}
+			tree = AttachPoint;
+		}
 		
 		// end of add code
 
 		//delete original node
-		//delete NodeToDelete;
+		delete NodeToDelete;
 	}
 }
 void Remove_Tree(TreeNode*& tree, string lname)
