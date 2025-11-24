@@ -1,6 +1,14 @@
+/*****************************************************
+// Author: Spencer Collins
+// Date : 11/23/2025 
+// This is the implementation file for Problem 1 Assignment 14.
+//***************************************************/
+
 #include<iostream>
 #include<fstream>
 #include <vector>
+#include <cstdlib>
+#include <algorithm>
 #include "Header.h"
 using namespace std;
 
@@ -201,7 +209,6 @@ TreeNode* Balance_Tree(vector<string> sortedTree, int start, int end) {
 
 	if (start > end) return nullptr;
 	int mid = (start+end) / 2;
-	cout << mid << endl;
 
 	TreeNode* root = new TreeNode;
 	root->GetLastName(sortedTree[mid]);
@@ -212,12 +219,25 @@ TreeNode* Balance_Tree(vector<string> sortedTree, int start, int end) {
 	return root;
 }
 
-void Tree_Height() {
+int Tree_Height(TreeNode* tree) {
+	if (tree == nullptr) return 0;
 
+	int leftHeight = Tree_Height(tree->Left);
+	int rightHeight = Tree_Height(tree->Right);
+
+	return 1 + max(leftHeight, rightHeight);
 }
 
-void Check_Tree_Balance() {
+bool Check_Tree_Balance(TreeNode* tree) {
 
+	if (tree == nullptr) return 1;
+
+	int leftHeight = Tree_Height(tree->Left);
+	int rightHeight = Tree_Height(tree->Right);
+
+	if(abs(leftHeight - rightHeight) > 1) return 0;
+
+	return Check_Tree_Balance(tree->Left) && Check_Tree_Balance(tree->Right);
 
 }
 
@@ -256,12 +276,24 @@ int main()
 			cin >> lname;
 			Remove_Tree(tree, lname);
 		}
-		else if (option == 5) {}
-		else if (option == 6) {}
+		else if (option == 5) {
+			int treeHeight = Tree_Height(tree);
+
+			cout << "Tree Height: " << treeHeight << endl;
+		}
+		else if (option == 6) {
+			bool treeBalance = Check_Tree_Balance(tree);
+
+			if (treeBalance == 1) {
+				cout << "Tree is balanced" << endl;
+			} else {
+				cout << "Tree is not balanced." << endl;
+			}
+		}
 		else if (option == 7) {
 			vector<string> sortedTree;
 			Sort_Tree(tree, sortedTree);
-			Balance_Tree(sortedTree, 0, sortedTree.size()-1);
+			tree = Balance_Tree(sortedTree, 0, sortedTree.size()-1);
 		}
 
 		cin.clear();
