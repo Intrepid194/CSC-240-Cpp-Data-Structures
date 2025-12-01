@@ -1,3 +1,8 @@
+/*****************************************************
+// Author: Spencer Collins
+// Date : 11/30/2025 
+// This is the implementation file for Problem 1 Assignment 16.
+//***************************************************/
 // interactive phone book
 #include <iostream>
 #include <vector>
