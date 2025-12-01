@@ -19,7 +19,9 @@ private:
         std::hash<string> str_hash;
         
         // add code here to calculate and the hash key
-        
+        size_t hashValue = str_hash(key);
+
+        return hashValue % table.size();
     }
 
 public:
@@ -32,18 +34,27 @@ public:
 
         // add code
         // 1. use has to the get the place in the table (vector<list<pair<string,string>>>)
+        auto& currentItem = table[index]; 
+
         // 2. check each entry in the chain (at the hash) - use range based for loop
         // 3. If name exists, update the phone and then return
-        
-
-
+        for (auto& element : currentItem) {
+            if (name == element.first) {
+                element.second = phone;
+                return;
+            }
+        }
         // end of code
 
         // add code
         // 1. check if position is not empty - collision occurred
         // 2. if collision update the collision counter
         // 3. add name and phone to the table (chain) using pushback (actually is a doubly linked list)
-        
+        if (currentItem.size() != 0) {
+            collisions++;           
+        }
+
+        currentItem.push_back({name, phone});
     }
 
     string search(const string& name) const {
@@ -63,12 +74,18 @@ public:
         auto& bucket = table[index];
 
         // add code
-        // 1. loop through each element in the hashed loactions list
+        // 1. loop through each element in the hashed locations list
         // 2. if the current name matches the one to delete, remove it bucket.erase(it)
         // 3. return
-        
+        auto it = bucket.begin();
+        for (auto it = bucket.begin(); it != bucket.end(); ++it) {
+            if (name == it->first) {
+                bucket.erase(it);
+                return;
+            };
+        }
 
-
+        return;
         // end of code
     }
 
